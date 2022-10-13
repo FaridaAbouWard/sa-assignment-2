@@ -14,8 +14,19 @@
         type: "GET",
         url: '/users/list',
         success: function(data) {
-          // This callback function will run once
-          // the ajax call as successfully completed
+         const table = $('#users');
+           data.forEach((user,idx) => {
+            const row = `
+              <tr>
+                <th scope="col">${idx+1}</th>
+                <th scope="col">${user.fname}</th>
+                <th scope="col">${user.lname}</th>
+                <th scope="col">${user.handler}</th>
+              </tr>
+              `;
+            table.append(row)
+          })
+
         }
       });
     });
